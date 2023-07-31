@@ -5,18 +5,18 @@ services:
     build: .
     image: strapi:4.12.0
     restart: unless-stopped
-    # env_file: .env
-    # environment:
+    env_file: .env
+    environment:
     #   DATABASE_CLIENT: ${DATABASE_CLIENT}
     #   DATABASE_HOST: strapiDB
     #   DATABASE_PORT: ${DATABASE_PORT}
     #   DATABASE_NAME: ${DATABASE_NAME}
     #   DATABASE_USERNAME: ${DATABASE_USERNAME}
     #   DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-    #   JWT_SECRET: ${JWT_SECRET}
-    #   ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-    #   APP_KEYS: ${APP_KEYS}
-    #   NODE_ENV: ${NODE_ENV}
+       JWT_SECRET: ${JWT_SECRET}
+       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+       APP_KEYS: ${APP_KEYS}
+       NODE_ENV: ${NODE_ENV}
     volumes:
       - ./config:/opt/app/config
       - ./src:/opt/app/src
@@ -24,7 +24,7 @@ services:
       - ./yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
-      - .tmp:/opt/app/.tmp
+      - ./.tmp:/opt/app/.tmp
     ports:
       - "1337:1337"
     # networks:
